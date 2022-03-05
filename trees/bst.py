@@ -41,9 +41,23 @@ class BST:
         print(p.value)
         self.visit(p.right)
 
+    def print_tree(self):
+        stack = []
+        p = self.root
+        while True:
+            if p is not None:
+                stack.append(p)
+                p = p.left
+            else:
+                if len(stack) == 0:
+                    break
+                else:
+                    p = stack.pop(-1)
+                    print(p.value, end=" ")
+                    p = p.right
+
     def remove(self, value):
         pass
-
 
 
 bst = BST()
@@ -56,4 +70,5 @@ bst.insert(3)
 bst.insert(105)
 bst.insert(78)
 bst.insert(189)
-bst.inorder()
+# bst.inorder()
+bst.print_tree()
